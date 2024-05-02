@@ -1,18 +1,15 @@
-/* eslint-disable no-underscore-dangle */
-const cloneSymbol = Symbol('cloneCar');
 export default class Car {
   constructor(brand, motor, color) {
-    if (typeof brand === 'string') this._brand = brand;
-    if (typeof motor === 'string') this._motor = motor;
-    if (typeof color === 'string') this._color = color;
+    this._brand = brand;
+    this._motor = motor;
+    this._color = color;
   }
 
-  [cloneSymbol]() {
-    return new this.constructor(this._brand, this._motor, this._color);
+  static get [Symbol.species]() {
+    return this;
   }
 
-  // Public method to clone the car
   cloneCar() {
-    return this[cloneSymbol]();
+    return new this.constructor[Symbol.species]();
   }
 }

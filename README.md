@@ -1,1 +1,6 @@
-# ALX Backend Javascript
+# Short Specializations
+
+### Authors &copy;
+
+- Uche Ofia
+
